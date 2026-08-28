@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Route clean API paths to the versioned PHP front controller.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/v1(?:/(.*))?$ api/v1/index.php [QSA,L]
+
+# Do not expose source/config/runtime directories when the app is flattened
+# into a shared-hosting public_html document root.
+RewriteRule ^(?:src|templates|config|storage)(?:/|$) - [F,L]

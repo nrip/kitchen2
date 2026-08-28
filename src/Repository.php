@@ -105,7 +105,13 @@ final class Repository {
         if ($this->pdo) {
             $sets = implode(',', array_map(fn($k)=>"`$k` = ?", array_keys($changes))); $stmt = $this->pdo->prepare("UPDATE `$table` SET $sets WHERE id = ?"); $stmt->execute([...array_values($changes), $id]); return $this->find($table, $id);
         }
-        foreach ($this->data[$table] ?? [] as &$row) if ((int)$row['id'] === $id) { $row = array_merge($row, $changes); $this->saveDemo(); return $row; }
+        foreach ($this->data[$table] ?? [] as $index => $row) {
+            if ((int)($row['id'] ?? 0) === $id) {
+                $this->data[$table][$index] = array_merge($row, $changes);
+                $this->saveDemo();
+                return $this->data[$table][$index];
+            }
+        }
         return null;
     }
 

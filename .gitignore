@@ -1,0 +1,13 @@
+# Local secrets and runtime data
+config/local.php
+.env
+.env.*
+!.env.example
+storage/*.json
+storage/*.log
+*.zip
+
+# Local development files
+.DS_Store
+.idea/
+.vscode/

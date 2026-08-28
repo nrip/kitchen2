@@ -1,0 +1,12 @@
+<?php
+// Copy this file to config/local.php on the server and replace placeholders.
+// Never commit or expose config/local.php.
+return [
+    'KITCHEN_PRODUCTION' => '1',
+    'KITCHEN_DB_HOST' => 'REPLACE_WITH_HOSTINGER_DATABASE_HOST',
+    'KITCHEN_DB_PORT' => '3306',
+    'KITCHEN_DB_NAME' => 'REPLACE_WITH_DATABASE_NAME',
+    'KITCHEN_DB_USER' => 'REPLACE_WITH_DATABASE_USER',
+    'KITCHEN_DB_PASS' => 'REPLACE_WITH_DATABASE_PASSWORD',
+    'INTEGRATION_API_KEY' => 'REPLACE_WITH_LONG_RANDOM_INTEGRATION_KEY',
+];
